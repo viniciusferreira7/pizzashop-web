@@ -1,7 +1,11 @@
+import { Button } from './components/ui/button'
+import './global.css'
 
 export function App() {
 
   return (
-    <h1>Hello Word</h1>
+    <div className='grid place-items-center h-screen'>
+      <Button>Submit</Button>
+    </div>
   )
 }
