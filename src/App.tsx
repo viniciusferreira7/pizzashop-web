@@ -1,10 +1,10 @@
-import { Button } from './components/ui/button'
 import './global.css'
 
-export function App() {
+import { Button } from './components/ui/button'
 
+export function App() {
   return (
-    <div className='grid place-items-center h-screen'>
+    <div className="grid h-screen place-items-center">
       <Button>Submit</Button>
     </div>
   )
