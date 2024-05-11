@@ -12,7 +12,7 @@ export function AuthLayout() {
         <footer className="text-sm">Painel do parceiro &copy;</footer>
       </div>
 
-      <div className="grid place-items-center">
+      <div className="relative grid place-items-center">
         <Outlet />
       </div>
     </div>
