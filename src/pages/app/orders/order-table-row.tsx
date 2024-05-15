@@ -3,7 +3,7 @@ import { ArrowRight, Search, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { TableCell, TableRow } from '@/components/ui/table'
 
-interface OrderTableRowProps { }
+interface OrderTableRowProps {}
 
 export function OrderTableRow(props: OrderTableRowProps) {
   return (

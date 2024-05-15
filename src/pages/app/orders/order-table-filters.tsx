@@ -1,5 +1,4 @@
 import { Search } from 'lucide-react'
-import { Search } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
