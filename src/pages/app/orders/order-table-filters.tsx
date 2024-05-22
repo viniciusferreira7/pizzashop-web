@@ -18,9 +18,9 @@ export function OrderTableFilters(props: OrderTableFiltersProps) {
       <span className="text-sm font-semibold">Filtros:</span>
       <Input placeholder="ID do pedido" className="h-8 w-auto" />
       <Input placeholder="Nome do cliente" className="h-8 w-[320px]" />
-      <Select>
-        <SelectTrigger className="h-8 w-[100px]">
-          <SelectValue></SelectValue>
+      <Select defaultValue="all">
+        <SelectTrigger className="h-8 w-[140px]">
+          <SelectValue />
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="all">Todos status</SelectItem>
