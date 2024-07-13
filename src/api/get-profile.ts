@@ -1,5 +1,4 @@
 import { api } from '@/lib/axios'
-
 interface GetProfileResponse {
   email: string
   phone: string | null
