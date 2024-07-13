@@ -13,6 +13,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from './ui/dropdown-menu'
+import { Skeleton } from './ui/skeleton'
 
 export function AccountMenu() {
   const [profile, managedRestaurant] = useQueries({
@@ -35,15 +36,32 @@ export function AccountMenu() {
           variant="outline"
           className="flex select-none items-center gap-2"
         >
-          {managedRestaurant.data?.name} <ChevronDown />
+          {managedRestaurant.isLoading ? (
+            <>
+              <Skeleton className="h-4 w-40" /> <ChevronDown />
+            </>
+          ) : (
+            <>
+              {managedRestaurant.data?.name} <ChevronDown />
+            </>
+          )}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">
         <DropdownMenuLabel className="flex flex-col">
-          <span>{profile.data?.name}</span>
-          <span className="text-sm font-normal text-muted-foreground">
-            {profile.data?.email}
-          </span>
+          {profile.isLoading ? (
+            <div className="space-y-1.5">
+              <Skeleton className="h-4 w-32 " />
+              <Skeleton className="h-4 w-40 " />
+            </div>
+          ) : (
+            <>
+              <span>{profile.data?.name}</span>
+              <span className="text-sm font-normal text-muted-foreground">
+                {profile.data?.email}
+              </span>
+            </>
+          )}
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
