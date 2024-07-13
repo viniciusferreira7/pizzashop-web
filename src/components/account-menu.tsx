@@ -23,10 +23,12 @@ export function AccountMenu() {
       {
         queryKey: ['profile'],
         queryFn: getProfile,
+        staleTime: Infinity,
       },
       {
         queryKey: ['managed-restaurant'],
         queryFn: getManagedRestaurant,
+        staleTime: Infinity,
       },
     ],
   })
