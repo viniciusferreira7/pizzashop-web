@@ -6,9 +6,7 @@ import { TableCell, TableRow } from '@/components/ui/table'
 
 import { OrderDetails } from './order-details'
 
-interface OrderTableRowProps { }
-
-export function OrderTableRow(props: OrderTableRowProps) {
+export function OrderTableRow() {
   return (
     <TableRow>
       <TableCell>

@@ -10,9 +10,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 
-interface OrderTableFiltersProps { }
-
-export function OrderTableFilters(props: OrderTableFiltersProps) {
+export function OrderTableFilters() {
   return (
     <form className="flex items-center gap-2">
       <span className="text-sm font-semibold">Filtros:</span>
