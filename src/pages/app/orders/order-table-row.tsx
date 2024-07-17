@@ -1,12 +1,27 @@
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
 import { ArrowRight, Search, X } from 'lucide-react'
 
+import { OrderStatus } from '@/components/order-status'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogTrigger } from '@/components/ui/dialog'
 import { TableCell, TableRow } from '@/components/ui/table'
 
 import { OrderDetails } from './order-details'
 
-export function OrderTableRow() {
+dayjs.extend(relativeTime)
+
+interface OrderDetailsProps {
+  order: {
+    status: 'pending' | 'processing' | 'delivering' | 'delivered' | 'canceled'
+    customerName: string
+    orderId: string
+    createAt: string
+    total: number
+  }
+}
+
+export function OrderTableRow({ order }: OrderDetailsProps) {
   return (
     <TableRow>
       <TableCell>
@@ -21,17 +36,21 @@ export function OrderTableRow() {
         </Dialog>
       </TableCell>
       <TableCell className="font-mono text-sm font-medium">
-        lnkjBJKsd424dfsdc1
+        {order.orderId}
       </TableCell>
-      <TableCell className="text-muted-foreground">há 15 minutos</TableCell>
+      <TableCell className="text-muted-foreground">
+        {dayjs(order.createAt).fromNow()}
+      </TableCell>
       <TableCell>
-        <div className="flex items-center gap-2">
-          <span className="size-2 rounded-full bg-slate-400" />
-          <span className="font-medium text-muted-foreground">Pendente</span>
-        </div>
+        <OrderStatus status={order.status} />
       </TableCell>
-      <TableCell className="font-medium">Vinicius Ferreira</TableCell>
-      <TableCell className="font-medium">R$ 149,90</TableCell>
+      <TableCell className="font-medium">{order.customerName}</TableCell>
+      <TableCell className="font-medium">
+        {order.total.toLocaleString('pt-BR', {
+          style: 'currency',
+          currency: 'BRL',
+        })}
+      </TableCell>
       <TableCell>
         <Button variant="outline" size="xs">
           <ArrowRight className="mr-2 size-3" />

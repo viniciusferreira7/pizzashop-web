@@ -1,4 +1,5 @@
 import './global.css'
+import './lib/dayjs'
 
 import { QueryClientProvider } from '@tanstack/react-query'
 import { Helmet, HelmetProvider } from 'react-helmet-async'
