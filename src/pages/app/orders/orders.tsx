@@ -19,14 +19,28 @@ import { OrderTableRow } from './order-table-row'
 export function Orders() {
   const [searchParams, setSearchParams] = useSearchParams()
 
+  const orderId = searchParams.get('orderId') ?? undefined
+  const customerName = searchParams.get('customerName') ?? undefined
+  const status = searchParams.get('status') ?? 'all'
+
   const pageIndex = z.coerce
     .number()
     .transform((page) => page - 1)
     .parse(searchParams.get('page') ?? '1')
 
   const { data: results } = useQuery({
-    queryKey: ['orders', 'pageIndex', pageIndex],
-    queryFn: () => getOrders({ pageIndex }),
+    queryKey: [
+      'orders',
+      'pageIndex',
+      pageIndex,
+      'orderId',
+      orderId,
+      'customerName',
+      customerName,
+      'status',
+      status,
+    ],
+    queryFn: () => getOrders({ pageIndex, orderId, customerName, status }),
   })
 
   function handlePaginated(pageIndex: number) {
