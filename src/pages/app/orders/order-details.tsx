@@ -20,6 +20,8 @@ import {
   TableRow,
 } from '@/components/ui/table'
 
+import { OrderDetailsSkeleton } from './order-details-skeleton'
+
 dayjs.extend(relativeTime)
 
 interface OrderDetailsProps {
@@ -34,17 +36,13 @@ export function OrderDetails({ orderId, open }: OrderDetailsProps) {
     enabled: open,
   })
 
-  if (!order) {
-    return null
-  }
-
   return (
     <DialogContent>
       <DialogHeader>
         <DialogTitle>Pedido: {orderId}</DialogTitle>
         <DialogDescription>Detalhes do pedido</DialogDescription>
       </DialogHeader>
-      {!!order && (
+      {order ? (
         <div className="space-y-6">
           <Table>
             <TableBody>
@@ -66,6 +64,12 @@ export function OrderDetails({ orderId, open }: OrderDetailsProps) {
                 </TableCell>
                 <TableCell className="flex justify-end">
                   {order?.customer?.phone ?? 'Não informado'}
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell className="text-muted-foreground">Email</TableCell>
+                <TableCell className="flex justify-end">
+                  {order?.customer?.email ?? 'Não informado'}
                 </TableCell>
               </TableRow>
               <TableRow>
@@ -128,6 +132,8 @@ export function OrderDetails({ orderId, open }: OrderDetailsProps) {
             </TableFooter>
           </Table>
         </div>
+      ) : (
+        <OrderDetailsSkeleton />
       )}
     </DialogContent>
   )
