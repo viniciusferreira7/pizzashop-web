@@ -20,6 +20,8 @@ type SignInForm = z.infer<typeof signInForm>
 export function SignIn() {
   const [searchParams] = useSearchParams()
 
+  console.log(searchParams.get('email'), 'email')
+
   const {
     register,
     handleSubmit,
@@ -27,7 +29,7 @@ export function SignIn() {
   } = useForm<SignInForm>({
     resolver: zodResolver(signInForm),
     defaultValues: {
-      email: searchParams.get('email') ?? 'k',
+      email: searchParams.get('email') ?? undefined,
     },
   })
 
