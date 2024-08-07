@@ -19,10 +19,16 @@ export function AppLayout() {
 
           if (status === 401 && code === 'UNAUTHORIZED') {
             navigate('/sign-in', { replace: true })
+
+            return
           }
           if (status === 500 && message === 'Unauthorized') {
             navigate('/sign-in', { replace: true })
+
+            return
           }
+
+          throw error
         }
       },
     )

@@ -80,6 +80,9 @@ export function StoreProfileDialog() {
 
       return { previousProfile: cached }
     },
+    onSuccess: () => {
+      toast.success('Perfil atualizado com sucesso!')
+    },
     onError: (_error, _variables, context) => {
       if (context?.previousProfile) {
         updateManagedRestaurantCached(context.previousProfile)
@@ -93,7 +96,6 @@ export function StoreProfileDialog() {
         name: data.name,
         description: data.description,
       })
-      toast.success('Perfil atualizado com sucesso!')
     } catch (err) {
       toast.error('Falha ao atualizado o perfil, tente novamente!')
     }
