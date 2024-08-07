@@ -51,6 +51,9 @@ export function SignUp() {
             },
           })
         },
+        onError: () => {
+          toast.error('Erro ao cadastrar o restaurante', {})
+        },
       },
     )
   }
