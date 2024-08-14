@@ -44,6 +44,11 @@ export function AccountMenu() {
     },
   })
 
+  console.log({
+    profile: profile.data,
+    managedRestaurant: managedRestaurant.data,
+  })
+
   return (
     <Dialog>
       <DropdownMenu>
