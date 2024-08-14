@@ -5,8 +5,8 @@ test('display day orders amount metrics', async ({ page }) => {
     waitUntil: 'networkidle',
   })
 
-  expect(page.getByText('20', { exact: true })).toBeVisible()
-  expect(page.getByText('--5% em relação a ontem')).toBeVisible()
+  await expect(page.getByText('20', { exact: true })).toBeVisible()
+  await expect(page.getByText('--5% em relação a ontem')).toBeVisible()
 })
 
 test('display month orders amount metrics', async ({ page }) => {
@@ -14,8 +14,8 @@ test('display month orders amount metrics', async ({ page }) => {
     waitUntil: 'networkidle',
   })
 
-  expect(page.getByText('37', { exact: true })).toBeVisible()
-  expect(page.getByText('+5% em relação ao mês passado')).toBeVisible()
+  await expect(page.getByText('37', { exact: true })).toBeVisible()
+  await expect(page.getByText('+5% em relação ao mês passado')).toBeVisible()
 })
 
 test('display month canceled orders amount metrics', async ({ page }) => {
@@ -23,8 +23,8 @@ test('display month canceled orders amount metrics', async ({ page }) => {
     waitUntil: 'networkidle',
   })
 
-  expect(page.getByText('12', { exact: true })).toBeVisible()
-  expect(
+  await expect(page.getByText('12', { exact: true })).toBeVisible()
+  await expect(
     page
       .locator('div')
       .filter({ hasText: /^12-5% em relação ao mês passado$/ })
@@ -36,6 +36,8 @@ test('display month revenue', async ({ page }) => {
     waitUntil: 'networkidle',
   })
 
-  expect(page.getByText('R$ 200,00')).toBeVisible()
-  expect(page.getByText('-5% em relação ao mês passado').first()).toBeVisible()
+  await expect(page.getByText('R$ 200,00')).toBeVisible()
+  await expect(
+    page.getByText('-5% em relação ao mês passado').first(),
+  ).toBeVisible()
 })
