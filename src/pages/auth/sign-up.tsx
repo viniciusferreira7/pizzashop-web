@@ -52,7 +52,7 @@ export function SignUp() {
           })
         },
         onError: () => {
-          toast.error('Erro ao cadastrar o restaurante', {})
+          toast.error('Erro ao cadastrar o restaurante')
         },
       },
     )
@@ -63,7 +63,7 @@ export function SignUp() {
       <Helmet title="Cadastro" />
       <div className="p-8">
         <Button variant="ghost" asChild className="absolute right-8 top-8">
-          <Link to="/sign-in">Faze login</Link>
+          <Link to="/sign-in">Fazer login</Link>
         </Button>
 
         <div className="flex w-[350px] flex-col justify-center gap-6">
